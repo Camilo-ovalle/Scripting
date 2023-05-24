@@ -1,6 +1,14 @@
 #!/bin/bash
 
-# Asking the user the name of the new project
+# Asking the user if he wants to start a new project using viteJS
+read -p "Do you want to start a new project using viteJS 🚀? (y/n): " vite
+
+if [ $vite = "y" ]
+then
+    npm create vite@latest
+
+else
+    # Asking the user the name of the new project
 read -p "Enter Project Name 🐉: " projectName
 
 # Creating the folder for the new project
@@ -9,7 +17,7 @@ mkdir $projectName
 cd $projectName
 
 # Asking the user if he wants to start a new git repository
-read -p "Do you want to start a git repository 🌱? (y/n): " git
+read -p "Do you want to start a git repository ? (y/n): " git
 
 if [ $git = "y" ]
 then
@@ -72,7 +80,15 @@ touch style.css
 cd ..
 cd ..
 
+touch .gitignore
 
+cat > .gitignore << EOF
+node_modules
+.DS_Store
+EOF
 
 echo "Now you can go to your new project directory, happy coding 🚀"
+fi
+
+
 
